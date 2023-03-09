@@ -4,6 +4,34 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+  <h4>Email: <%= @order.email %></h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Item Price</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.line_items.each do |line_item| %>
+        <tr>
+          <td><%= image_tag line_item.product.image.thumb.url, class: 'main-img' %></td>
+          <td><%= line_item.product.name %></td>
+          <td><%= line_item.product.description %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= humanized_money_with_symbol line_item.item_price %></td>
+          <td><%= humanized_money_with_symbol line_item.total_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <p>Total: <%= number_to_currency(@order.total_cents/100.0, precision: 2) %></p>
+  </table>
+
+        
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
