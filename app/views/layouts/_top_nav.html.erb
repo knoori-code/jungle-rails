@@ -6,6 +6,7 @@
     <h2>Where you can find any plants!</h2>
   </section>
 </header>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-nav">
   <div class="container">
     <a class="navbar-brand" href="<%= root_path %>">Jungle</a>
@@ -71,6 +72,21 @@
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-end">
+        <% if current_user %>
+          Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+        <% else %>
+          <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
 const gnr = () => {
