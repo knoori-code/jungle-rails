@@ -1,10 +1,10 @@
 describe('home page feature test', () => {
   beforeEach(() => {
     cy.request('/cypress_rails_reset_state')
-    cy.visit('/')
   })
   
   it("Visits home page", () => {
+    cy.visit('/')
   })
 
   it("There are products on the page", () => {
